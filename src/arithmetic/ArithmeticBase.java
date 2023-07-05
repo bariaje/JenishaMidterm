@@ -13,27 +13,32 @@ import java.util.Scanner;
  * @author sivagamasrinivasan
  * 
  */
-public class ArithmeticBase 
-{
- public double x,y;
-    double calculate(double x, double y) 
-        {
-        Scanner sc =new Scanner(System.in);
-        System.out.println("Enter arithmetic operation to Perform: ");
-        String s= sc.next();
-        switch (s.toUpperCase()) 
-        {
-            case "PLUS":
+
+public class ArithmeticBase {
+    public double x, y;
+
+    enum Operation {
+        ADD, SUB, MUL, DIV
+    }
+
+    double calculate(double x, double y) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter arithmetic operation to perform: ");
+        Operation operation = Operation.valueOf(sc.next().toUpperCase());
+
+        switch (operation) {
+            case ADD:
                 return x + y;
-            case "MINUS":
+            case SUB:
                 return x - y;
-            case "TIMES":
+            case MUL:
                 return x * y;
-            case "DIVIDE":
+            case DIV:
                 return x / y;
             default:
-                throw new AssertionError("Unknown operations " + this);
+                throw new AssertionError("Unknown operation: " + operation);
         }
     }
-   
 }
+
+   
